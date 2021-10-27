@@ -1,0 +1,22 @@
+name: Pull Request
+
+on: pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: "Install dependencies"
+        run: |
+          pip3 install -r requirements.txt
+
+      - name: "Run"
+        run: |
+          python3 main.py
